@@ -45,13 +45,13 @@ audioElement.addEventListener('timeupdate', ()=>{
     progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
      
     
-    Myprogressbar.Value = progress;
+    Myprogressbar.value = progress;
 
 });
 Myprogressbar.addEventListener('change', () =>{
     console.log('change');
     console.log(audioElement.currentTime,Myprogressbar.Value,audioElement.duration);
 
-    audioElement.currentTime = Myprogressbar.Value.toString() *audioElement.duration/100; 
+    audioElement.currentTime = Myprogressbar.value *audioElement.duration/100; 
 
 })  
