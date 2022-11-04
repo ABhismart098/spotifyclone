@@ -5,12 +5,22 @@ let audioElement = new Audio('Blank Space .mp3');
 let Masterplay = document.getElementById('Masterplay');
 let Myprogressbar = document.getElementById('myprogressbar');
 let gif = document.getElementById('gif');
+let songItem = Array.from(document.getElementsByClassName('songItem'));
 
 let song = [
-    {SongName: "Blank space" ,FilePath: "C:\Users\abhis\Desktop\yadav\BlankSpace.mp3", CoverPath: "C:\Users\abhis\Desktop\yadav\bg3.jpg"}
+    {SongName: "Blank space" ,FilePath: "C:\Users\abhis\Desktop\yadav\BlankSpace.mp3", CoverPath: "C:\Users\abhis\Desktop\yadav\bg3.jpg"},
+    {SongName: "LA LA Ram Ram" ,FilePath: "C:\Users\abhis\Desktop\yadav\ramram.mp3", CoverPath: "C:\Users\abhis\Desktop\yadav\bg7.jpg"},
+    {SongName: "KHAUF" ,FilePath: "C:\Users\abhis\Desktop\yadav\khauf.mp3", CoverPath: "C:\Users\abhis\Desktop\yadav\bg6.jpg"}
 ]
+songItem.forEach((element, i)=>{
+    element.getElementsByTagName("img")[0].src = song[i].CoverPath;
+    element.getElementsByClassName("songName")[0].innerText=song[i].SongName;
+
+
+})
 
 //audioElement.play();
+
 
 //Handle play pause click
 Masterplay.addEventListener('click', ()=>{
@@ -36,21 +46,20 @@ Masterplay.addEventListener('click', ()=>{
 
 //Listen Event
 audioElement.addEventListener('timeupdate', ()=>{
-    console.log('timeupdate');
+    
     
 
 
 
     //update seekbar
-    progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
+    progress = parseInt((audioElement.currentTime/audioElement.duration)*100); 
      
     
     Myprogressbar.value = progress;
 
 });
 Myprogressbar.addEventListener('change', () =>{
-    console.log('change');
-    console.log(audioElement.currentTime,Myprogressbar.Value,audioElement.duration);
+   
 
     audioElement.currentTime = Myprogressbar.value *audioElement.duration/100; 
 
